@@ -57,6 +57,8 @@ class AddTodo extends Component {
       // 4. The value of the text field also should reflect the local state of this component.
       <div>
         <TextField
+          id="new-item-input"
+          data-testid="new-item-input"
           label="Add New Item"
           variant="outlined"
           onChange={this.handleChange}
@@ -64,14 +66,17 @@ class AddTodo extends Component {
         />
         <LocalizationProvider dateAdapter={AdapterDateFns}>         
         <DesktopDatePicker
-        id="new-item-date"
-        label="Due Date"
-        value={this.state.due}
-        onChange={this.dateHandleChange}
-        renderInput={(params) => <TextField {...params} />}
+          id="new-item-date"
+          data-testid="new-item-date"
+          label="Due Date"
+          value={this.state.due}
+          onChange={this.dateHandleChange}
+          renderInput={(params) => <TextField {...params} />}
         />
         </LocalizationProvider>
         <Button
+          id="new-item-button"
+          data-testid="new-item-button"
           style={{ marginLeft: "10px" }}
           onClick={this.handleSubmit}
           variant="contained"
