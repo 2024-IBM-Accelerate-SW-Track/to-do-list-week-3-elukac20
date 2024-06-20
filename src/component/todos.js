@@ -11,7 +11,7 @@ import { Card, Grid, ListItemButton, ListItemText, Checkbox} from "@mui/material
 // a key, and it's own card shown in the UI
 const Todos = ({ todos, deleteTodo }) => {
   const todoList = todos.length ? (
-    todos.map((todo) => {
+    todos.map((todo, color="#ffffffff") => {
       return (
         <Grid key={todo.id}>
           <Card style={{marginTop:10}}>
