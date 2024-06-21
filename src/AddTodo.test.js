@@ -76,8 +76,29 @@ afterEach(() => {
   expect(check).toBe(null);
  });
 
+
+
  test('test that App component doesn\'t add a task without due date', () => {
   render(<App />);
+
+  //editing task name
+  var inputTask = screen.getByRole('textbox', {name: /Add New Item/i});
+  fireEvent.change(inputTask, {target:{value:"Item"}});
+
+  //Invalid due date
+
+  //firing button
+  var element = screen.getByRole('button', {name: /Add/i});
+  fireEvent.click(element);
+
+  var check;
+  try{
+    check = screen.getByRole("checkbox");
+  }catch{
+    check = null;
+  }
+  expect(check).toBe(null);
+
  });
 
 
