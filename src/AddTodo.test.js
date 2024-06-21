@@ -110,4 +110,19 @@ afterEach(() => {
 
  test('test that App component renders different colors for past due events', () => {
   render(<App />);
+
+    //editing task name
+    var inputTask = screen.getByRole('textbox', {name: /Add New Item/i});
+    fireEvent.change(inputTask, {target:{value:"Task"}});
+  
+    //change date so that date isn't invalid
+    var inputDate = screen.getByPlaceholderText("mm/dd/yyyy");
+    fireEvent.change(inputDate, { target: { value: "01/01/2023"}});
+  
+    //firing button
+    var element = screen.getByRole('button', {name: /Add/i});
+    fireEvent.click(element);
+
+    const taskCheck = screen.getByText(/Task/i).style.background
+    expect(taskCheck).not.toBe("white")
  });
