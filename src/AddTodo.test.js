@@ -50,12 +50,30 @@ afterEach(() => {
   const check = screen.getAllByText(/Duplicate item/i);
   expect(check.length).toBe(1);
 
-
-
  });
+
+
 
  test('test that App component doesn\'t add a task without task name', () => {
   render(<App />);
+
+  //no task name
+
+  //change date so that date isn't invalid
+  const inputDate = screen.getByPlaceholderText("mm/dd/yyyy");
+  fireEvent.change(inputDate, { target: { value: "01/01/2023"}});
+  
+  //firing button
+  const element = screen.getByRole('button', {name: /Add/i});
+  fireEvent.click(element);
+
+  var check;
+  try{
+    check = screen.getByRole("checkbox");
+  }catch{
+    check = null;
+  }
+  expect(check).toBe(null);
  });
 
  test('test that App component doesn\'t add a task without due date', () => {
