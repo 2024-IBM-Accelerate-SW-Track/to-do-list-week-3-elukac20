@@ -13,7 +13,7 @@ const Todos = ({ todos, deleteTodo }) => {
   const todoList = todos.length ? (
     todos.map((todo) => {
       let color = "#ffffff";
-      if(new Date()< new Date(todo.due)){
+      if(new Date() < new Date(todo.due)){
         color="#d9e2de"
       }
       return (
